@@ -1,14 +1,32 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, View,TouchableHighlight } from 'react-native'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import styles from './styles'
 
-export default function HomeScreen({route,navigation}) {
-  const user = route.params.fullName;
-  console.log(route)
-  console.log(user);
+const HomeScreen = (props) => {
+  // const user = route.params.fullName;
+  console.log(">>>>>>>Route",props.navigation.state.params)
+
+  const routeToUserProfile = () => {
+      props.navigation.navigate('UserProfile',props.navigation.state.params)
+  }
+
     return (
+      <View style = {styles.container}>
 
-        <View>
-            <Text>Welcome {user}</Text>
+        <KeyboardAwareScrollView style={{borderWidth: 4,width:'100%'}}>
+            <Text>Welcome</Text>
+        </KeyboardAwareScrollView>
+        <View style = {styles.footer}>
+          <TouchableHighlight onPress = {routeToUserProfile}>
+          <Text style= {{borderWidth:3}}> Profile </Text>
+
+          </TouchableHighlight>
+
         </View>
+      </View>
+
     )
 }
+
+export default HomeScreen
