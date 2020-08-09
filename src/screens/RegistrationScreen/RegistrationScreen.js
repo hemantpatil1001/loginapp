@@ -34,13 +34,10 @@ export default function RegistrationScreen({navigation}) {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                      console.log("inside usersRef")
-                      console.log(data);
-                      console.log(">>>>>>>")
-                        navigation.navigate('Home', data);
+
                     })
                     .catch((error) => {
-                      console.log(error);
+                      
                         alert(error)
                     });
             })
