@@ -4,8 +4,6 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import styles from './styles'
 
 const HomeScreen = ({route,navigation}) => {
-  // const user = route.params.fullName;
-  console.log(">>>>>>>Route",route)
 
   const routeToUserProfile = () => {
       navigation.navigate('UserProfile',route.params)

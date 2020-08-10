@@ -3,19 +3,10 @@ import styles from './styles.js'
 import {View,Text} from 'react-native'
 import {firebase} from './../../firebase/config'
 
+
+
 const UserProfileScreen = ({route,navigation}) => {
 
-function signOut(){
-
-  firebase.auth().signOut().then(function() {
-    console.log('Sign Out Successful')
-    
-    }).catch(function(error) {
-      console.log('>>>>>>>>>Error>>>>>>>>>')
-      console.log(error)
-    });
-
-}
 
   return(
     <View style = {styles.container}>
@@ -27,5 +18,18 @@ function signOut(){
     </View>
   );
 }
+
+export const signOut = () => {
+
+  firebase.auth().signOut().then(function() {
+    console.log('Sign Out Successful')
+
+    }).catch(function(error) {
+      console.log('>>>>>>>>>Error>>>>>>>>>')
+      console.log(error)
+    });
+
+}
+
 
 export default UserProfileScreen

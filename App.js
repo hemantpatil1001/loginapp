@@ -20,24 +20,27 @@ export default function App() {
   useEffect( () => {
     const usersRef =  firebase.firestore().collection('users');
     firebase.auth().onAuthStateChanged( firebase_user => {
-      if (firebase_user) {
-        
-         usersRef
-          .doc(firebase_user.uid)
-          .get()
-          .then((document) => {
-            const userData = document.data()
-            setLoading(false)
-            setUser(userData)
 
-          })
-          .catch((error) => {
-            setLoading(false)
+
+      if (firebase_user) {
+        console.log('FIREBASE >>> ', firebase_user);
+        if(firebase_user.displayName){
+          setUser({
+              id: firebase_user.uid,
+              email:firebase_user.email,
+              fullName: firebase_user.displayName
           });
+        }
+        setLoading(false)
+
+
       } else {
         setLoading(false)
         setUser(null)
       }
+
+
+
     });
   }, []);
 
